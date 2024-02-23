@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AstrolabeDC.Views.SearchPage"
+             Title="SearchPage">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <CollectionView 
+            ItemsSource="{Binding CollectioItems}"
+            SelectionChangedCommand="{Binding CollectioItemSelectedCommand}" 
+            SelectedItem="{Binding CollectioSelectedItem}"
+            SelectionMode="Single"
+            BackgroundColor="Transparent"
+            Margin="0,0,0,10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <StackLayout Spacing="2">
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="{Binding Title}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Text}" TextColor="#808080"/>
+                            </HorizontalStackLayout>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Picker 
+            Grid.Row="1"
+            ItemsSource="{Binding PickerItems}" 
+            SelectedItem="{Binding PickerSelectedItem, Mode=TwoWay}"
+            ItemDisplayBinding="{Binding Number}"/>
+        <ActivityIndicator 
+            IsRunning="{Binding IsActivityIndicatorRunning}"
+            WidthRequest="{OnPlatform Android=50, iOS=50}"
+            HeightRequest="{OnPlatform Android=50, iOS=50}"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AstrolabeDC.Views.ListPage"
+             Title="ListPage">
+    
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <CollectionView 
+                Grid.Row="0"
+                ItemsSource="{Binding CollectioItems}"
+                SelectionChangedCommand="{Binding CollectioItemSelectedCommand}" 
+                SelectedItem="{Binding CollectioSelectedItem}"
+                SelectionMode="Single"
+                BackgroundColor="Transparent"
+                Margin="0,0,0,10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <StackLayout Spacing="2">
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="{Binding Title}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding Reply}" TextColor="#0000ff"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout Spacing="5">
+                                    <Label Text="{Binding User}"/>
+                                    <HorizontalStackLayout Spacing="2">
+                                        <Label Text="| 조회 " />
+                                        <Label Text="{Binding Views}"/>
+                                    </HorizontalStackLayout>
+                                    <HorizontalStackLayout Spacing="2">
+                                        <Label Text="| 추천 " />
+                                        <Label Text="{Binding Recommend}"/>
+                                    </HorizontalStackLayout>
+                                </HorizontalStackLayout>
+                            </StackLayout>
+                            <HorizontalStackLayout Spacing="5" VerticalOptions="EndAndExpand" HorizontalOptions="End">
+                                <Label Text="{Binding Subject}"/>
+                                <Label Text="{Binding Time}"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ActivityIndicator 
+                IsRunning="{Binding IsActivityIndicatorRunning}"
+                WidthRequest="{OnPlatform Android=50, iOS=50}"
+                HeightRequest="{OnPlatform Android=50, iOS=50}"/>
+            <Picker 
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                ItemsSource="{Binding PickerItems}" 
+                SelectedItem="{Binding PickerSelectedItem, Mode=TwoWay}"
+                ItemDisplayBinding="{Binding Title}"/>
+            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Button 
+                    Text="이전 페이지" 
+                    Command="{Binding PreviousCommand}" 
+                    IsEnabled="{Binding IsEnabledPreviousPage}" 
+                    HorizontalOptions="StartAndExpand"/>
+                <Button 
+                    Text="다음 페이지" 
+                    Command="{Binding NextCommand}" 
+                    IsEnabled="{Binding IsEnabledNextPage}" 
+                    HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

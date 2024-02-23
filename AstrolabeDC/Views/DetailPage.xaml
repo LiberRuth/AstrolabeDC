@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AstrolabeDC.Views.DetailPage"
+             Title="DetailPage">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout Spacing="2" HorizontalOptions="Center">
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="{Binding TitleHeader}"
+                           FontAttributes="Bold" 
+                           FontSize="Subtitle"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5">
+                    <Label Text="{Binding UserHeade}"
+                           FontSize="{OnPlatform WinUI=Micro, MacCatalyst=Micro, Tizen=Micro}"/>
+                    <Label Text="{Binding CountHeade}"
+                           FontSize="{OnPlatform WinUI=Micro, MacCatalyst=Micro, Tizen=Micro}"/>
+                    <Label Text="{Binding CommenHeade}"
+                           FontSize="{OnPlatform WinUI=Micro, MacCatalyst=Micro, Tizen=Micro}"/>
+                    <Label Text="{Binding ReplynumHeade}"
+                           FontSize="{OnPlatform WinUI=Micro, MacCatalyst=Micro, Tizen=Micro}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="{Binding DateHeade}"
+                           FontSize="{OnPlatform WinUI=Micro, MacCatalyst=Micro, Tizen=Micro}"/>
+                </HorizontalStackLayout>
+            </StackLayout>
+            <Line BackgroundColor="#808080" StrokeThickness="2" Margin="10,0,10,0" />
+            <StackLayout x:Name="stackLayout" />
+            <StackLayout Spacing="2" HorizontalOptions="Center">
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5" Margin="0,0,0,10">
+                    <Button BackgroundColor="#000080" Text="추천" />
+                    <Button BackgroundColor="#808080" Text="비추천" />
+                </HorizontalStackLayout>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
