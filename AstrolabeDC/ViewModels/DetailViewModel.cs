@@ -57,12 +57,25 @@ namespace AstrolabeDC.ViewModels
             set { SetProperty(ref dateHeade, value); }
         }
 
+        private string? upBox;
+        public string? UpBox
+        {
+            get { return upBox; }
+            set { SetProperty(ref upBox, value); }
+        }
+
+        private string? downBox;
+        public string? DownBox
+        {
+            get { return downBox; }
+            set { SetProperty(ref downBox, value); }
+        }
+
         public DetailViewModel(StackLayout stackLayout, string url) 
         {
             _stackLayout = stackLayout;
             GetGallDetailData(url);
         }
-
 
         private void HeaderData(IDictionary<string, string> heade_data) 
         {
@@ -74,11 +87,18 @@ namespace AstrolabeDC.ViewModels
             DateHeade = heade_data["Date"];
         }
 
+        private void RecommendBox(IDictionary<string, string> recommend_data) 
+        {
+            UpBox =  $"추천 {recommend_data["Up"]}";
+            DownBox = $"비추천 {recommend_data["Down"]}";
+        }
+
         private async void GetGallDetailData(string url) 
         {
             await gallDetail.GetGallDetail(url);
             var detail_data = await gallDetail.DetailData();
             HeaderData(gallDetail.GallUserData());
+            RecommendBox(gallDetail.RecommendBox());
 
             foreach (var detail_item in detail_data)
             {
@@ -109,7 +129,9 @@ namespace AstrolabeDC.ViewModels
                     var labelView = new Label
                     {
                         Text = detail_item["Embed"],
+                        HorizontalOptions = LayoutOptions.Center,
                     };
+
                     _stackLayout.Children.Add(labelView);
                 }
                 else if (detail_item.ContainsKey("Audio"))

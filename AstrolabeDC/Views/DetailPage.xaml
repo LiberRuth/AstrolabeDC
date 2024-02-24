@@ -31,8 +31,8 @@
             <StackLayout x:Name="stackLayout" />
             <StackLayout Spacing="2" HorizontalOptions="Center">
                 <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5" Margin="0,0,0,10">
-                    <Button BackgroundColor="#000080" Text="추천" />
-                    <Button BackgroundColor="#808080" Text="비추천" />
+                    <Button BackgroundColor="#000080" Text="{Binding UpBox}" />
+                    <Button BackgroundColor="#808080" Text="{Binding DownBox}" />
                 </HorizontalStackLayout>
             </StackLayout>
         </VerticalStackLayout>
