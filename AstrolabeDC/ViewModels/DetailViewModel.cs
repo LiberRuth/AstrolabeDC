@@ -95,6 +95,10 @@ namespace AstrolabeDC.ViewModels
 
         private async void GetGallDetailData(string url) 
         {
+
+#if ANDROID
+            await Task.Delay(500);
+#endif
             await gallDetail.GetGallDetail(url);
             var detail_data = await gallDetail.DetailData();
             HeaderData(gallDetail.GallUserData());
@@ -158,7 +162,7 @@ namespace AstrolabeDC.ViewModels
 
                     _stackLayout.Children.Add(htmlView);
                 }
-
+                await Task.Delay(100);
             }
         }
     }

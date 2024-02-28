@@ -30,7 +30,7 @@
             <Line BackgroundColor="#808080" StrokeThickness="2" Margin="10,0,10,0" />
             <StackLayout x:Name="stackLayout" />
             <StackLayout Spacing="2" HorizontalOptions="Center">
-                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5" Margin="0,0,0,10">
+                <HorizontalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="5" Margin="0,10,0,10">
                     <Button BackgroundColor="#000080" Text="{Binding UpBox}" />
                     <Button BackgroundColor="#808080" Text="{Binding DownBox}" />
                 </HorizontalStackLayout>

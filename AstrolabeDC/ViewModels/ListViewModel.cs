@@ -129,7 +129,9 @@ namespace AstrolabeDC.ViewModels
 
             IsActivityIndicatorRunning = true;
 
-            //await Task.Delay(500);
+#if ANDROID
+            await Task.Delay(500);
+#endif
             await gallList.GetGallList(url);
             gallListData = gallList.Gall_list();
 
@@ -169,13 +171,13 @@ namespace AstrolabeDC.ViewModels
         private void PreviousPageCommand()
         {
             currentPage--;
-            GetGallListData($"{currentURL}&page={currentPage}");
+            GetGallListData($"{currentURL}&page={currentPage}{exceptionMode}");
         }
 
         private void NextPageCommand()
         {
             currentPage++;
-            GetGallListData($"{currentURL}&page={currentPage}");
+            GetGallListData($"{currentURL}&page={currentPage}{exceptionMode}");
         }
 
         private void PickePages()
@@ -184,7 +186,7 @@ namespace AstrolabeDC.ViewModels
             PickerItems = new ObservableCollection<TabBoxModel> 
             {
                new TabBoxModel { Title = "일반", Value = "&exception_mode=all" },
-               new TabBoxModel { Title = "개념글", Value = "&exception_mod=erecommend" },
+               new TabBoxModel { Title = "개념글", Value = "&exception_mode=recommend" },
                new TabBoxModel { Title = "공지", Value = "&exception_mode=notice" },
             };
         }

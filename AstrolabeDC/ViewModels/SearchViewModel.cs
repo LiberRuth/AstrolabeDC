@@ -126,6 +126,9 @@ namespace AstrolabeDC.ViewModels
 
             IsActivityIndicatorRunning = true;
 
+#if ANDROID
+            await Task.Delay(500);
+#endif
             //await Task.Delay(500);
             await search.GetSearch(url);
             searchData = search.Gallery();
