@@ -3,7 +3,6 @@ using AstrolabeDC.MediaRendering;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using LiteHtmlMaui.Controls;
-using System.Collections.ObjectModel;
 
 namespace AstrolabeDC.ViewModels
 {
@@ -100,6 +99,13 @@ namespace AstrolabeDC.ViewModels
             await Task.Delay(500);
 #endif
             await gallDetail.GetGallDetail(url);
+
+            if (gallDetail == null && gallDetail!.errorMessage != null)
+            {
+                await Application.Current!.MainPage!.DisplayAlert("Error", gallDetail.errorMessage, "OK");
+                return;
+            }
+
             var detail_data = await gallDetail.DetailData();
             HeaderData(gallDetail.GallUserData());
             RecommendBox(gallDetail.RecommendBox());
