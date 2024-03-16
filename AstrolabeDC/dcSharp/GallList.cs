@@ -106,7 +106,7 @@ namespace AstrolabeDC.dcSharp
                 var gallTitle = Nodes.SelectNodes(".//td[@class]/a[@view-msg]");
                 foreach (var title in gallTitle)
                 {
-                    dataIDictionary.Add("Title", title.InnerText);
+                    dataIDictionary.Add("Title", title.InnerText.Trim());
                 }
 
                 var replyNumbox = Nodes.SelectNodes(".//td[@class='gall_tit ub-word']/a[@class='reply_numbox']/span");

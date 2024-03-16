@@ -2,6 +2,7 @@
 using AstrolabeDC.Models;
 using AstrolabeDC.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Web;
 using System.Windows.Input;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace AstrolabeDC.ViewModels
 {
-    public class SearchViewModel : ObservableObject
+    public partial class SearchViewModel : ObservableObject
     {
 #if WINDOWS || MACCATALYST
         private int pageSize = 50;
@@ -64,14 +65,14 @@ namespace AstrolabeDC.ViewModels
             }
         }
 
-        public ICommand CollectioItemSelectedCommand { get; }
-        public ICommand PickeItems { get; }
+        //public ICommand CollectioItemSelectedCommand { get; }
+        //public ICommand PickeItems { get; }
 
         public SearchViewModel(string keyword)
         {
             Initialize($"https://search.dcinside.com/gallery/q/{UrlConversion(keyword)}");
-            CollectioItemSelectedCommand = new Command<SearchModel>(OnCollectioItemSelected);
-            PickeItems = new Command<PagePickerModel>(OnPickeItemSelected);
+            //CollectioItemSelectedCommand = new Command<SearchModel>(OnCollectioItemSelected);
+            //PickeItems = new Command<PagePickerModel>(OnPickeItemSelected);
         }
 
         private void PickerShowSelectedValue()
@@ -103,11 +104,13 @@ namespace AstrolabeDC.ViewModels
             }
         }
 
+        [RelayCommand]
         private void OnCollectioItemSelected(SearchModel item)
         {
             CollectioSelectedItem = item;
         }
 
+        [RelayCommand]
         private void OnPickeItemSelected(PagePickerModel item)
         {
             PickerSelectedItem = item;

@@ -2,12 +2,13 @@
 using AstrolabeDC.Models;
 using AstrolabeDC.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace AstrolabeDC.ViewModels
 {
-    public class ListViewModel : ObservableObject
+    public partial class ListViewModel : ObservableObject
     {
         private int currentPage = 1;
         private int maxPage = 1;
@@ -74,8 +75,8 @@ namespace AstrolabeDC.ViewModels
             }
         }
 
-        public ICommand CollectioItemSelectedCommand { get; }
-        public ICommand PickeItems { get; }
+        //public ICommand CollectioItemSelectedCommand { get; }
+        //public ICommand PickeItems { get; }
         public ICommand PreviousCommand { get; }
         public ICommand NextCommand { get; }
 
@@ -83,8 +84,8 @@ namespace AstrolabeDC.ViewModels
         {
             Initialize(url);
             currentURL = url;
-            CollectioItemSelectedCommand = new Command<ListModel>(OnCollectioItemSelected);
-            PickeItems = new Command<TabBoxModel>(OnPickeItemSelected);
+            //CollectioItemSelectedCommand = new Command<ListModel>(OnCollectioItemSelected);
+            //PickeItems = new Command<TabBoxModel>(OnPickeItemSelected);
             PreviousCommand = new Command(PreviousPageCommand);
             NextCommand = new Command(NextPageCommand);
         }
@@ -106,11 +107,13 @@ namespace AstrolabeDC.ViewModels
             }
         }
 
+        [RelayCommand]
         private void OnCollectioItemSelected(ListModel item)
         {
             CollectioSelectedItem = item;
         }
 
+        [RelayCommand]
         private void OnPickeItemSelected(TabBoxModel item) 
         {
             PickerSelectedItem = item;
