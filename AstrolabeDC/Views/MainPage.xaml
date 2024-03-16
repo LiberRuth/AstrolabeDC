@@ -33,7 +33,7 @@
                        Margin="0,0,5,0"/>
                 <Button Grid.Row="0" 
                         Grid.Column="1" 
-                        Command="{Binding NavigateCommand}" 
+                        Command="{Binding NavigateButtonCommand}" 
                         CommandParameter="{Binding EnteredText}"
                         Text="검색"/>
             </Grid>

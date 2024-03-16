@@ -1,9 +1,10 @@
 ﻿using AstrolabeDC.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace AstrolabeDC.ViewModels
 {
-    public class MainViewModel : ObservableObject
+    public partial class MainViewModel : ObservableObject
     {
         private string? _enteredText;
         public string? EnteredText
@@ -12,14 +13,15 @@ namespace AstrolabeDC.ViewModels
             set { SetProperty(ref _enteredText, value); }
         }
 
-        public Command<string> NavigateCommand { get; }
+        //public Command<string> NavigateCommand { get; }
 
         public MainViewModel()
         {
-            NavigateCommand = new Command<string>(NavigateToNewPage);
+            //NavigateCommand = new Command<string>(NavigateButton);
         }
 
-        private async void NavigateToNewPage(string text)
+        [RelayCommand]
+        private async Task NavigateButton(string text)
         {
             await Application.Current!.MainPage!.Navigation.PushAsync(new SearchPage(text));
         }

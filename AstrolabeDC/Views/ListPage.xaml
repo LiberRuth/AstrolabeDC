@@ -60,12 +60,12 @@
             <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                 <Button 
                     Text="이전 페이지" 
-                    Command="{Binding PreviousCommand}" 
+                    Command="{Binding PreviousButtonCommand}" 
                     IsEnabled="{Binding IsEnabledPreviousPage}" 
                     HorizontalOptions="StartAndExpand"/>
                 <Button 
                     Text="다음 페이지" 
-                    Command="{Binding NextCommand}" 
+                    Command="{Binding NextButtonCommand}" 
                     IsEnabled="{Binding IsEnabledNextPage}" 
                     HorizontalOptions="EndAndExpand"/>
             </StackLayout>

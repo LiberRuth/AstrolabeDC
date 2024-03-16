@@ -77,8 +77,8 @@ namespace AstrolabeDC.ViewModels
 
         //public ICommand CollectioItemSelectedCommand { get; }
         //public ICommand PickeItems { get; }
-        public ICommand PreviousCommand { get; }
-        public ICommand NextCommand { get; }
+        //public ICommand PreviousCommand { get; }
+        //public ICommand NextCommand { get; }
 
         public ListViewModel(string url)
         {
@@ -86,8 +86,8 @@ namespace AstrolabeDC.ViewModels
             currentURL = url;
             //CollectioItemSelectedCommand = new Command<ListModel>(OnCollectioItemSelected);
             //PickeItems = new Command<TabBoxModel>(OnPickeItemSelected);
-            PreviousCommand = new Command(PreviousPageCommand);
-            NextCommand = new Command(NextPageCommand);
+            //PreviousCommand = new Command(PreviousPageCommand);
+            //NextCommand = new Command(NextPageCommand);
         }
 
         private void PickerShowSelectedValue()
@@ -171,13 +171,15 @@ namespace AstrolabeDC.ViewModels
             IsActivityIndicatorRunning = false;
         }
 
-        private void PreviousPageCommand()
+        [RelayCommand]
+        private void PreviousButton()
         {
             currentPage--;
             GetGallListData($"{currentURL}&page={currentPage}{exceptionMode}");
         }
 
-        private void NextPageCommand()
+        [RelayCommand]
+        private void NextButton()
         {
             currentPage++;
             GetGallListData($"{currentURL}&page={currentPage}{exceptionMode}");
