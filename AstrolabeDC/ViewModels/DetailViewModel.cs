@@ -8,6 +8,7 @@ namespace AstrolabeDC.ViewModels
 {
     public class DetailViewModel : ObservableObject
     {
+        private List<IDictionary<string, string>> detail_data = new List<IDictionary<string, string>>();
         private readonly StackLayout _stackLayout;
         private GallDetail gallDetail = new GallDetail();
         ImageRendering imageRequest = new ImageRendering();
@@ -96,21 +97,21 @@ namespace AstrolabeDC.ViewModels
         {
 
 #if ANDROID
-            await Task.Delay(500);
+            await Task.Delay(1000);
 #endif
             await gallDetail.GetGallDetail(url);
+            detail_data = await gallDetail.DetailData();
 
-            if (gallDetail == null && gallDetail!.errorMessage != null)
+            if (detail_data == null && gallDetail!.errorMessage != null)
             {
                 await Application.Current!.MainPage!.DisplayAlert("Error", gallDetail.errorMessage, "OK");
                 return;
             }
 
-            var detail_data = await gallDetail.DetailData();
             HeaderData(gallDetail.GallUserData());
             RecommendBox(gallDetail.RecommendBox());
 
-            foreach (var detail_item in detail_data)
+            foreach (var detail_item in detail_data!)
             {
                 if (detail_item.ContainsKey("Image"))
                 {

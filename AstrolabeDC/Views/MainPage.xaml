@@ -12,7 +12,7 @@
                 HeightRequest="185"
                 Aspect="AspectFit"/>
             <Label
-                Text="AstrolabeDC"
+                Text="검색"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"/>
             <Grid>

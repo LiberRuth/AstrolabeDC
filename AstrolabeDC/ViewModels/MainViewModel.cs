@@ -23,6 +23,7 @@ namespace AstrolabeDC.ViewModels
         [RelayCommand]
         private async Task NavigateButton(string text)
         {
+            if (string.IsNullOrEmpty(text)) return; 
             await Application.Current!.MainPage!.Navigation.PushAsync(new SearchPage(text));
         }
     }
