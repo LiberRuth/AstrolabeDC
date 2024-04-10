@@ -6,70 +6,37 @@ using LiteHtmlMaui.Controls;
 
 namespace AstrolabeDC.ViewModels
 {
-    public class DetailViewModel : ObservableObject
+    public partial class DetailViewModel : ObservableObject
     {
         private List<IDictionary<string, string>> detail_data = new List<IDictionary<string, string>>();
         private readonly StackLayout _stackLayout;
         private GallDetail gallDetail = new GallDetail();
         ImageRendering imageRequest = new ImageRendering();
 
-        private string? titleHeader;
-        public string? TitleHeader
-        {
-            get { return titleHeader; }
-            set { SetProperty(ref titleHeader, value); }
-        }
+        [ObservableProperty]
+        private string? _titleHeader;
 
-        private string? userHeade;
-        public string? UserHeade
-        {
-            get { return userHeade; }
-            set { SetProperty(ref userHeade, value); }
-        }
+        [ObservableProperty]
+        private string? _userHeade;
 
+        [ObservableProperty]
+        private string? _countHeade;
 
-        private string? countHeade;
-        public string? CountHeade
-        {
-            get { return countHeade; }
-            set { SetProperty(ref countHeade, value); }
-        }
+        [ObservableProperty]
+        private string? _commenHeade;
 
+        [ObservableProperty]
+        private string? _replynumHeade;
 
-        private string? commenHeade;
-        public string? CommenHeade
-        {
-            get { return commenHeade; }
-            set { SetProperty(ref commenHeade, value); }
-        }
+        [ObservableProperty]
+        private string? _dateHeade;
 
-        private string? replynumHeade;
-        public string? ReplynumHeade
-        {
-            get { return replynumHeade; }
-            set { SetProperty(ref replynumHeade, value); }
-        }
+        [ObservableProperty]
+        private string? _upBox;
 
-        private string? dateHeade;
-        public string? DateHeade
-        {
-            get { return dateHeade; }
-            set { SetProperty(ref dateHeade, value); }
-        }
+        [ObservableProperty]
+        private string? _downBox;
 
-        private string? upBox;
-        public string? UpBox
-        {
-            get { return upBox; }
-            set { SetProperty(ref upBox, value); }
-        }
-
-        private string? downBox;
-        public string? DownBox
-        {
-            get { return downBox; }
-            set { SetProperty(ref downBox, value); }
-        }
 
         public DetailViewModel(StackLayout stackLayout, string url) 
         {

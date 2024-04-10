@@ -6,19 +6,8 @@ namespace AstrolabeDC.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
+        [ObservableProperty]
         private string? _enteredText;
-        public string? EnteredText
-        {
-            get { return _enteredText; }
-            set { SetProperty(ref _enteredText, value); }
-        }
-
-        //public Command<string> NavigateCommand { get; }
-
-        public MainViewModel()
-        {
-            //NavigateCommand = new Command<string>(NavigateButton);
-        }
 
         [RelayCommand]
         private async Task NavigateButton(string text)

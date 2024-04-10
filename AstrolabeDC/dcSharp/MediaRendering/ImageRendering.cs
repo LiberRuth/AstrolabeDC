@@ -31,21 +31,13 @@ namespace AstrolabeDC.MediaRendering
 
         public byte[] LoadImageStringByte()
         {
-            if (byteData == null) return null!;
-            return byteData;
+            return byteData ?? null!;
         }
 
         public int LoadImageWidth()
         {
             var bitmap = SKBitmap.Decode(byteData);
-            if (bitmap != null)
-            {
-                return bitmap.Width;
-            }
-            else
-            {
-                return 0;
-            }
+            return bitmap?.Width ?? 0;
         }
 
         public int LoadImageHeight()
@@ -53,14 +45,7 @@ namespace AstrolabeDC.MediaRendering
             try
             {
                 var bitmap = SKBitmap.Decode(byteData);
-                if (bitmap != null)
-                {
-                    return bitmap.Height;
-                }
-                else
-                {
-                    return 0;
-                }
+                return bitmap?.Width ?? 0;
             }
             catch
             {

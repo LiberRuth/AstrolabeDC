@@ -4,7 +4,6 @@ using AstrolabeDC.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace AstrolabeDC.ViewModels
 {
@@ -18,40 +17,20 @@ namespace AstrolabeDC.ViewModels
         private GallList gallList = new GallList();
         private List<IDictionary<string, string>> gallListData = new List<IDictionary<string, string>>();
 
+        [ObservableProperty]
         private ObservableCollection<ListModel>? _collectioItems;
-        public ObservableCollection<ListModel>? CollectioItems
-        {
-            get { return _collectioItems; }
-            set { SetProperty(ref _collectioItems, value); }
-        }
 
+        [ObservableProperty]
         private ObservableCollection<TabBoxModel>? _pickerItems;
-        public ObservableCollection<TabBoxModel>? PickerItems
-        {
-            get { return _pickerItems; }
-            set { SetProperty(ref _pickerItems, value); }
-        }
 
+        [ObservableProperty]
         private bool _isActivityIndicatorRunning;
-        public bool IsActivityIndicatorRunning
-        {
-            get => _isActivityIndicatorRunning;
-            set => SetProperty(ref _isActivityIndicatorRunning, value);
-        }
 
+        [ObservableProperty]
         private bool _isEnabledPreviousPage;
-        public bool IsEnabledPreviousPage
-        {
-            get => _isEnabledPreviousPage;
-            set => SetProperty(ref _isEnabledPreviousPage, value);
-        }
 
+        [ObservableProperty]
         private bool _isEnabledNextPage;
-        public bool IsEnabledNextPage
-        {
-            get => _isEnabledNextPage;
-            set => SetProperty(ref _isEnabledNextPage, value);
-        }
 
         private ListModel? _collectioSelectedItem;
         public ListModel? CollectioSelectedItem
@@ -75,19 +54,10 @@ namespace AstrolabeDC.ViewModels
             }
         }
 
-        //public ICommand CollectioItemSelectedCommand { get; }
-        //public ICommand PickeItems { get; }
-        //public ICommand PreviousCommand { get; }
-        //public ICommand NextCommand { get; }
-
         public ListViewModel(string url)
         {
             Initialize(url);
             currentURL = url;
-            //CollectioItemSelectedCommand = new Command<ListModel>(OnCollectioItemSelected);
-            //PickeItems = new Command<TabBoxModel>(OnPickeItemSelected);
-            //PreviousCommand = new Command(PreviousPageCommand);
-            //NextCommand = new Command(NextPageCommand);
         }
 
         private void PickerShowSelectedValue()

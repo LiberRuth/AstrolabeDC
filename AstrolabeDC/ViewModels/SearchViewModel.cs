@@ -5,8 +5,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Web;
-using System.Windows.Input;
-
 
 namespace AstrolabeDC.ViewModels
 {
@@ -22,26 +20,14 @@ namespace AstrolabeDC.ViewModels
         private Search search = new Search();
         private List<IDictionary<string, string>> searchData = new List<IDictionary<string, string>>();
 
+        [ObservableProperty]
         private ObservableCollection<SearchModel>? _collectioItems;
-        public ObservableCollection<SearchModel>? CollectioItems
-        {
-            get { return _collectioItems; }
-            set { SetProperty(ref _collectioItems, value); }
-        }
 
+        [ObservableProperty]
         private ObservableCollection<PagePickerModel>? _pickerItems;
-        public ObservableCollection<PagePickerModel>? PickerItems
-        {
-            get { return _pickerItems; }
-            set { SetProperty(ref _pickerItems, value); }
-        }
 
+        [ObservableProperty]
         private bool _isActivityIndicatorRunning;
-        public bool IsActivityIndicatorRunning
-        {
-            get => _isActivityIndicatorRunning;
-            set => SetProperty(ref _isActivityIndicatorRunning, value);
-        }
 
         private SearchModel? _collectioSelectedItem;
         public SearchModel? CollectioSelectedItem
@@ -65,14 +51,9 @@ namespace AstrolabeDC.ViewModels
             }
         }
 
-        //public ICommand CollectioItemSelectedCommand { get; }
-        //public ICommand PickeItems { get; }
-
         public SearchViewModel(string keyword)
         {
             Initialize($"https://search.dcinside.com/gallery/q/{UrlConversion(keyword)}");
-            //CollectioItemSelectedCommand = new Command<SearchModel>(OnCollectioItemSelected);
-            //PickeItems = new Command<PagePickerModel>(OnPickeItemSelected);
         }
 
         private void PickerShowSelectedValue()

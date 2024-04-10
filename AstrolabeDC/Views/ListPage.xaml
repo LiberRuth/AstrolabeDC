@@ -63,6 +63,13 @@
                     Command="{Binding PreviousButtonCommand}" 
                     IsEnabled="{Binding IsEnabledPreviousPage}" 
                     HorizontalOptions="StartAndExpand"/>
+                <!--<HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="5">
+                    <Label TextColor="{AppThemeBinding Light=Black, Dark=Gray}"
+                           VerticalOptions="Center" />
+                    <Button BackgroundColor="Transparent" 
+                            TextColor="{AppThemeBinding Light=Black, Dark=Gray}" 
+                            Text="검색" />
+                </HorizontalStackLayout>-->
                 <Button 
                     Text="다음 페이지" 
                     Command="{Binding NextButtonCommand}" 
